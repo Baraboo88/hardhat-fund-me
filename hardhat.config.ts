@@ -1,10 +1,14 @@
 import { HardhatUserConfig } from "hardhat/config";
-import "@nomicfoundation/hardhat-toolbox";
-import "dotenv/config";
-import "@nomiclabs/hardhat-etherscan";
-import "@typechain/hardhat";
-import "hardhat-gas-reporter";
-import "solidity-coverage";
+
+import "@typechain/hardhat"
+import "@nomiclabs/hardhat-waffle"
+import "@nomiclabs/hardhat-etherscan"
+import "@nomiclabs/hardhat-ethers"
+import  "ethereum-waffle"
+
+import "hardhat-gas-reporter"
+import "dotenv/config"
+import "solidity-coverage"
 import "hardhat-deploy"
 
 const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL || "https://eth-rinkeby";
@@ -19,7 +23,7 @@ const config: HardhatUserConfig = {
     rinkeby: {
       url: RINKEBY_RPC_URL,
       accounts: [PRIVATE_KEY!],
-      chainId: 4,
+      chainId: 4
     },
     localhost: {
       url: "http://127.0.0.1:8545/",
@@ -33,7 +37,7 @@ const config: HardhatUserConfig = {
     apiKey: ETHERSCAN_API_KEY,
   },
   gasReporter: {
-    enabled: false,
+    enabled: true,
     outputFile: "gas-report.txt",
     noColors: true,
     currency: "USD",

@@ -13,8 +13,6 @@ const deployMocks: DeployFunction = async function (hre: HardhatRuntimeEnvironme
     const { deploy, log } = deployments;
     const { deployer } = await getNamedAccounts();
 
-    console.log(deployer)
-
     if (developmentChains.includes(network.name)) {
         log("Local network detected! Deploying mocks...");
         await deploy("MockV3Aggregator", {
